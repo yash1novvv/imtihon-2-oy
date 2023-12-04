@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2-oy-imtihon</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header__container">
+        <a href="index.html">
+          <img src="img/logo.svg" alt="logo" width="226" height="44" />
+        </a>
+
+        <label class="label" for="search"
+          ><img src="img/lupa.png" alt="search"
+        /></label>
+        <form class="form">
+          <input
+            class="search_input"
+            type="text"
+            placeholder="Search books"
+            id="search"
+            autocomplete="off"
+          />
+        </form>
+      </div>
+    </header>
+
+    <div class="intro">
+      <div class="container intro_container">
+        <h2 class="intro_result">
+          Showing <span class="result__number">0</span> Result(s)
+        </h2>
+
+        <div class="d-flex align-items-center">
+          <button class="btn btn-primary me-2 plus__btn">+1</button>
+          <button class="btn btn-danger me-3 minus__btn">-1</button>
+
+          <button class="btn_order">
+            <img class="calendar" src="img/calendar.png" alt="calendar" />
+            <p class="text">Order by newest</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <div class="main_container">
+        <div class="dv" style="background-color: #fff; padding-left: 130px">
+          <h2 class="book_title">Bookmarks</h2>
+
+          <p class="book_text">
+            If you dont like to read, you havent found the right book
+          </p>
+
+          <ul class="book__list"></ul>
+        </div>
+
+        <ul class="list"></ul>
+      </div>
+    </main>
+
+    <template class="bookMarkTemplate">
+      <li class="book_item">
+        <div>
+          <h3 class="book_list-title">Python</h3>
+          <p class="book_list-text">David M. Beazley</p>
+        </div>
+        <div>
+          <a href="#" class="book-open-btn">
+            <img src="img/book-open.svg" alt="book-open" />
+          </a>
+          <button type="button" class="delete_btn">Del</button>
+        </div>
+      </li>
+    </template>
+
+    <template class="template">
+      <li class="item">
+        <div class="img_book">
+          <img
+            class="img"
+            src="https://picsum.photos/id/74/201/202"
+            alt="rasm"
+          />
+        </div>
+        <h3 class="title__book">Python</h3>
+        <p class="author__book">David M. Beazley</p>
+        <p class="year__book">2009</p>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+          "
+        >
+          <button class="book__btn">Bookmark</button>
+          <!-- <button
+            class="btn btn-primary "
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+          >
+            More Info
+          </button> -->
+          <button
+            class="btn btn-outline-primary"
+            id="modal-open-btn"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+          >
+            More info
+          </button>
+        </div>
+        <a href="#" class="read_link">Read</a>
+      </li>
+    </template>
+
+    <!-- <div
+      class="offcanvas offcanvas-end modal-info"
+      tabindex="-1"
+      id="offcanvasRight"
+      aria-labelledby="offcanvasRightLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <img style="margin-bottom: 30px" class="modal-img" src="" alt="" />
+        <p style="margin-bottom: 30px" class="modal-text"></p>
+        <span>Author: </span><a class="modal-span-author" href="#"></a
+        ><br /><br />
+        <span>Published: </span><a class="modal-span-published" href="#"></a
+        ><br /><br />
+        <span>Publishers: </span><a class="modal-span-publishers" href="#"></a
+        ><br /><br />
+        <span>Categories: </span><a class="modal-span-categories" href="#"></a
+        ><br /><br />
+        <span>Pages Count: </span><a class="modal-span-pagesCount" href="#"></a
+        ><br /><br />
+
+        <a class="read_linkk" href="#">Read</a>
+      </div>
+    </div> -->
+
+    <div
+      class="offcanvas offcanvas-end book-modal"
+      tabindex="-1"
+      id="offcanvasRight"
+      aria-labelledby="offcanvasRightLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel" class="book-modal-title">Python</h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="text-center mt-2">
+        <img
+          class="book-modal-img"
+          src="images/book.png"
+          alt="book"
+          width="120"
+          height="150"
+        />
+      </div>
+
+      <div class="offcanvas-body book-modal-text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, at quia
+        voluptatem corrupti temporibus sed? Asperiores cupiditate nostrum et
+        perspiciatis tenetur aut nisi tempora, qui hic accusantium id.
+        Voluptates adipisci doloremque cum facere? Est nihil tempora odit modi
+        iusto asperiores mollitia blanditiis accusantium facere laborum
+        voluptatibus ratione minus dicta commodi eveniet nemo repudiandae,
+        officia fugiat velit autem sunt, ex quod nam? Facere eaque incidunt
+        similique, debitis dolorem, tempora ratione unde suscipit, ex odio
+        cupiditate explicabo praesentium? Soluta eveniet qui similique. Tempora
+        inventore voluptatem quos tempore dolor, voluptatum, quo repellat
+        architecto eveniet, ad magni iusto vitae debitis nisi unde rem.
+        Aspernatur?
+      </div>
+
+      <div class="book-modal-information ms-3 pt-3">
+        <p>
+          Author:
+          <span
+            class="border border-primary rounded-pill pt-1 pb-1 pe-3 ps-3 text-info book-author"
+            >Sanjar</span
+          >
+        </p>
+      </div>
+
+      <div class="book-modal-information ms-3">
+        <p>
+          Published:
+          <span
+            class="border border-primary rounded-pill pt-1 pb-1 pe-3 ps-3 text-info book-published"
+            >2001</span
+          >
+        </p>
+      </div>
+
+      <div class="book-modal-information ms-3">
+        <p>
+          Publishers:
+          <span
+            class="border border-primary rounded-pill pt-1 pb-1 pe-3 ps-3 text-info book-publishers"
+            >Najot talim</span
+          >
+        </p>
+      </div>
+
+      <div class="book-modal-information ms-3">
+        <p>
+          Categories:
+          <span
+            class="border border-primary rounded-pill pt-1 pb-1 pe-3 ps-3 text-info book-category"
+            >Computer</span
+          >
+        </p>
+      </div>
+
+      <div class="book-modal-information ms-3">
+        <p>
+          Pages Count:
+          <span
+            class="border border-primary rounded-pill pt-1 pb-1 pe-3 ps-3 text-info book-page"
+            >777</span
+          >
+        </p>
+      </div>
+
+      <div class="text-end pe-4 pb-2">
+        <a
+          type="button"
+          class="btn btn-secondary pe-3 ps-3 reading-book"
+          target="_blanc"
+          >Read</a
+        >
+      </div>
+    </div>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
